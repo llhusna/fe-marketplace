@@ -42,23 +42,25 @@ export const MainProfile = () => {
             style={{background:"rgba(41, 41, 41, 0.5)", backdropFilter:"blur(50px)"}}
             >
             <div>
-                <div className="text-2xl font-semibold text-center text-white pb-4">
+                <div className="text-2xl font-medium text-center text-white pb-4">
                 {/* @{profile.user_public_address.slice(-4).padStart(profile.user_public_address.length, ".")} */}
-                Collection Name
+                Username
                 </div>
-                <div onClick={() => setIsContainerCollapsed(true)}>
-                <img className="profile-size mt-10" src={avatar} />
+
+                <div className="pb-2">
+                  <img className="profile-size mt-10" src={avatar} />
                 </div>
-                <div className="text-center text-sm font-bold text-opensans">
-                {accountId ? 
-                <>
-                    By @{accountId}
-                </>
-                :
-                <>
-                    By @username
-                </>
-                }
+
+                <div className="text-center text-xs font-medium text-opensans border-[0.5px] border-[#C8C8C8] rounded-md p-2">
+                  {accountId ? 
+                    <>
+                        By @{accountId}
+                    </>
+                    :
+                    <>
+                        By @username
+                    </>
+                  }
                 </div>
 
                 <div className="text-sm my-6">
@@ -92,59 +94,60 @@ export const MainProfile = () => {
                 </div>
 
                 <button
-                onClick={() => navigate("/updateprofile")}
-                className="cursor-pointer my-6 text-center border-[1px] py-2 px-6 rounded-lg text-sm m-auto flex justify-center"
+                  onClick={() => navigate("/updateprofile")}
+                  className="cursor-pointer my-6 text-center border-[0.5px] border-solid border-[#FF1F00] py-2 px-6 rounded-lg text-xs m-auto flex justify-center bg-transparent"
                 >
-                Add to favourite
+                  Edit profile
                 </button>
                 
-                <div className="flex lg:mt-40 lg:mb-10 gap-x-4 justify-center">
-                <div className="flex justify-center pt-2">
-                    <div className="community-icon-div mr-3">
-                    <a
-                    href="https://twitter.com/3six9OFFICIAL"
-                    target="_blank"
-                    className="pl-0 pr-0"
-                    ><img
-                        alt="twitter"
-                        src={images.twitter}
-                        className="community-icon mr-1"
-                    /></a >
-                    </div>
-                    <div className="community-icon-div mr-3">
-                    <a
-                    href="https://twitter.com/3six9OFFICIAL"
-                    target="_blank"
-                    className="pl-0 pr-0"
-                    ><img
-                        alt="twitter"
-                        src={images.twitter}
-                        className="community-icon mr-1"
-                    /></a >
-                    </div>
-                    <div className="community-icon-div mr-3">
-                    <a
-                        href="https://discord.gg/86uzNjMgPK"
+                <div className="flex lg:mt-20 lg:mb-10 justify-center">
+                    <div className="grid grid-cols-3 gap-2 mx-5">
+                    <div className="bg-[#393D5E] rounded-md flex justify-center items-center px-2 py-2">
+                        <a
+                        href="https://www.facebook.com/3six9OFFICIAL"
                         target="_blank"
-                        className="pl-0 pr-0">
+                      >
                         <img
-                            alt="discord"
-                            src={images.discord}
-                            className="community-icon mr-1"
+                            alt="facebook"
+                            src={images.facebook}
+                            className="w-2.5 lg:w-2.5"
                         />
-                    </a >
+                      </a>
                     </div>
-                </div>
+                    <div className="bg-[#393D5E] rounded-md flex justify-center items-center px-2">
+                        <a
+                        href="https://twitter.com/3six9OFFICIAL"
+                        target="_blank"
+                        >
+                        <img
+                            alt="twitter"
+                            src={images.twitter}
+                            className="w-3.5 lg:w-5"
+                        />
+                        </a>
+                    </div>
+                    <div className="bg-[#393D5E] rounded-md  flex justify-center items-center">
+                        <a
+                          href="https://discord.gg/86uzNjMgPK"
+                          target="_blank">
+                          <img
+                              alt="discord"
+                              src={images.discord}
+                              className="w-3.5 lg:w-5"
+                          />
+                        </a >
+                    </div>
+                  </div>
                 </div>
             </div>
           </div>
 
           {/*  right container */}
           {/* button */}
-          <div className="flex flex-col col-span-4 lg:col-span-3 -translate-y-96 lg:-translate-y-10 ">
-          <div className='flex font-light bg-transparent border-[1px] border-[#6B6B6B] rounded-lg text-[10px] lg:text-xs lg:w-[75%]'>
+          <div className="flex flex-col col-span-4 lg:col-span-3 -translate-y-96 lg:-translate-y-10 -translate-x-8">
+          <div className='grid grid-cols-7 font-light bg-[#242424] border-[1px] border-[#FF1F00] rounded-lg text-[10px] lg:text-xs lg:w-[70%] p-0.5'>
                 <div  
-                    className={`rounded-lg h-8 lg:h-10 cursor-pointer px-6 flex items-center  ${
+                    className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
                     currentComponent === 1 ? "bg-red-600" : "bg-transparent"
                     }`}
                     onClick={() => setCurrentComponent(1)}
@@ -152,7 +155,7 @@ export const MainProfile = () => {
                       Creations
                 </div>
                 <div  
-                    className={`rounded-lg h-8 lg:h-10 px-6 cursor-pointer flex items-center  ${
+                    className={`rounded-lg h-8 lg:h-10 px-2 cursor-pointer flex items-center justify-center ${
                     currentComponent === 2 ? "bg-red-600" : "bg-transparent"
                     }`}
                     onClick={() => setCurrentComponent(2)}
@@ -160,7 +163,7 @@ export const MainProfile = () => {
                       Collections
                 </div>
                 <div  
-                    className={`rounded-lg h-8 lg:h-10 px-6 cursor-pointer flex items-center  ${
+                    className={`rounded-lg h-8 lg:h-10 px-2 cursor-pointer flex items-center justify-center ${
                     currentComponent === 3 ? "bg-red-600" : "bg-transparent"
                     }`}
                     onClick={() => setCurrentComponent(3)}
@@ -168,7 +171,7 @@ export const MainProfile = () => {
                       On Sales
                 </div>
                 <div  
-                    className={`rounded-lg h-8 lg:h-10 cursor-pointer px-6 flex items-center  ${
+                    className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
                     currentComponent === 4 ? "bg-red-600" : "bg-transparent"
                     }`}
                     onClick={() => setCurrentComponent(4)}
@@ -176,7 +179,7 @@ export const MainProfile = () => {
                       Favourites
                 </div>
                 <div  
-                    className={`rounded-lg h-8 lg:h-10 px-6 cursor-pointer flex items-center  ${
+                    className={`rounded-lg h-8 lg:h-10 px-2 cursor-pointer flex items-center justify-center ${
                     currentComponent === 5 ? "bg-red-600" : "bg-transparent"
                     }`}
                     onClick={() => setCurrentComponent(5)}
@@ -184,14 +187,14 @@ export const MainProfile = () => {
                       My Auctions
                 </div>
                 <div  
-                    className={`rounded-lg h-8 lg:h-10 px-6 cursor-pointer flex items-center  ${
+                    className={`rounded-lg h-8 lg:h-10 px-2 cursor-pointer flex items-center justify-center ${
                     currentComponent === 6 ? "bg-red-600" : "bg-transparent"
                     }`}
                     onClick={() => setCurrentComponent(6)}
                     >
                       Activities
                 </div><div  
-                    className={`rounded-lg h-8 lg:h-10 px-6 cursor-pointer flex items-center  ${
+                    className={`rounded-lg h-8 lg:h-10 px-2 cursor-pointer flex items-center justify-center ${
                     currentComponent === 7 ? "bg-red-600" : "bg-transparent"
                     }`}
                     onClick={() => setCurrentComponent(7)}

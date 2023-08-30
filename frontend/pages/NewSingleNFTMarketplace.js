@@ -95,19 +95,22 @@ export const NewSingleNFTMarketplace = (props) => {
             </>              
             ) : null}
 
-                <div className="flex flex-col md:col-span-1 mr-6 lg:mr-10">
+                <div className="flex flex-col md:col-span-1 mr-6">
                     {/* <div className='flex gap-x-4'>
                         <span><img src={`https://ipfs.io/ipfs/${data.sale_collectibles.collectibles_user.profile_photo_path}`} className="creator-size"/></span>
                         <span className='font-extrabold pt-2 text-gray-400'>{data.sale_collectibles.collectible_collection.tokenAddress}</span>
                     </div> */}
-                    <div>
+                   {/*  <div>
                         <div className='mt-6 lg:mt-0'>
                             <img className='rounded-md object-contain border-[1px] border-rose-600 carousel-background' src={data.sale_collectibles.ipfs_media_path}  />  
                         </div>      
-                    </div>
+                    </div> */}
+                     <div className='flex col-span-1 justify-center relative mt-6 lg:mt-0'>
+                        <img className='rounded-md md:w-full lg:w-6/6 object-contain border-[1px] border-rose-600 carousel-background h-[600px]' src={data.sale_collectibles.ipfs_media_path}   />  
+                    </div>    
                 </div>
 
-                <div class="flex md:col-span-1 justify-center">
+                <div class="flex md:col-span-1 justify-center ml-10">
                     <div className='flex flex-col w-full'>
                         <div className='text-xl lg:text-2xl font-medium py-2 flex gap-x-2 items-center'>
                             {data.sale_collectibles.collectible_name}
@@ -115,7 +118,7 @@ export const NewSingleNFTMarketplace = (props) => {
                         </div>
                         <div className='flex justify-between'>
                             <div className='text-[10px] lg:text-xs'>
-                                <span>Created by</span>
+                                <span>Created by </span>
                                 <span className='text-red-600'>Creator Name</span>
                             </div> 
                             

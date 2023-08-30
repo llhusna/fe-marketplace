@@ -36,7 +36,8 @@ export default function Landing() {
              inset-x-0
              bottom-10
              h-11
-             w-[28%]">
+             w-[28%]
+             min-[1920px]:w-[26%]">
             
             <div className='flex items-center justify-between'>
                 <div className='ml-6'>
@@ -46,7 +47,7 @@ export default function Landing() {
                 </div>
 
                 <div className="">
-                            <ul className="flex text-xs pt-1 px-4">
+                            <ul className="flex gap-x-2 min-[1920px]:gap-x-6  text-xs pt-1 px-4">
                                 <li className="rounded-sm">
                                     <a
                                         href="/#/newmarketplace"

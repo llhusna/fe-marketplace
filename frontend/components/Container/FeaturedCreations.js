@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import artwork from "../../data/landing/artwork";
+import { IoMdColorPalette } from "react-icons/io";
 
 function FeaturedCreations() {
   return (
@@ -34,24 +35,34 @@ function FeaturedCreations() {
                 </div>
 
                 <div className='absolute bottom-0 w-full'>
-                <div className='m-1 lg:m-2 rounded-lg opaque-bg'>
-                  <div className='grid grid-cols-2 lg:py-2 divide-x'>
-                    <div className='flex flex-col place-items-center'>
-                      <div className='pt-1 pb-2' >
-                      <div className='text-[10px] lg:text-xs'>Mint Price</div>
-                      <div className='text-[11px] lg:text-sm'>4.06 ETH</div>
-                      <div className='text-[10px] lg:text-xs font-light'>5100 usd</div>
+                  <div className='m-1 lg:m-2 rounded-lg flex grid grid-cols-4 gap-x-2'>
+                    <div className='col-span-3 w-[108%]'>
+                      <div className='grid grid-cols-2 lg:py-2 divide-x opaque-bg rounded-md' >
+                        <div className='flex flex-col place-items-center'>
+                          <div className='pt-1 pb-2' >
+                          <div className='text-[10px] lg:text-[11px] text-opensans font-semibold'>List Price</div>
+                          <div className='text-[11px] lg:text-sm'>4.06 ETH</div>
+                          <div className='text-[10px] lg:text-[11px] text-opensans font-semibold'>5100 usd</div>
+                          </div>
+                        </div>
+                        <div className='flex flex-col place-items-center'>
+                          <div className='pt-1 pb-2'>
+                          <div className='text-[10px] lg:text-[11px] text-opensans font-semibold'>Last Sale</div>
+                          <div className='text-[11px] lg:text-sm'>1000</div>
+                          <div className='text-[10px] lg:text-[11px] text-opensans font-semibold'>5100 usd</div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className='flex flex-col place-items-center'>
-                      <div className='pt-1 pb-2'>
-                      <div className='text-[10px] lg:text-xs font-light'>Item Number</div>
-                      <div className='text-[11px] lg:text-sm'>1000</div>
-                      <div className='text-[10px] lg:text-xs font-light'>5100 usd</div>
-                      </div>
+                    <div className='opaque-bg flex flex-col place-items-center h-10 rounded-md w-[80%] translate-x-3'>
+                    <IoMdColorPalette
+                        className="text-gray-100 text-2xl mt-2"
+                      />
                     </div>
-                </div>
-                </div>
+
+                  
+                    
+                  </div>
                 </div>
             </div>
          </div>

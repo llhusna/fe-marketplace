@@ -42,15 +42,29 @@ function Footer() {
             </div>
             <div className="grid grid-cols-7 gap-2 pt-2 mx-5">
               <div className="bg-[#393D5E] rounded-md flex justify-center items-center">
+                <a
+                  href="https://www.tiktok.com/@3six9official"
+                  target="_blank"
+                  className="pl-0 pr-0"
+                >
+                  <SiTiktok />
+                </a>
+              </div>
+              <div className="bg-[#393D5E] rounded-md flex justify-center items-center">
+                  <a
+                    href="https://www.facebook.com/3six9OFFICIAL"
+                    target="_blank"
+                    className="pl-0 pr-0"
+                  >
+                    <BsFacebook />
+                  </a>
+              </div>
+              <div className="bg-[#393D5E] rounded-md flex justify-center items-center">
                   <a
                   href="https://twitter.com/3six9OFFICIAL"
                   target="_blank"
                   >
-                  <img
-                      alt="twitter"
-                      src={images.twitter}
-                      className="w-3.5 lg:w-5"
-                  />
+                    <BsTwitter />
                   </a>
               </div>
               <div className="bg-[#393D5E] rounded-md  flex justify-center items-center">
@@ -63,30 +77,6 @@ function Footer() {
                         className="w-3.5 lg:w-5"
                     />
                   </a >
-              </div>
-              <div className="bg-[#393D5E] rounded-md flex justify-center items-center">
-                  <a
-                  href="https://twitter.com/3six9OFFICIAL"
-                  target="_blank"
-                  >
-                  <img
-                      alt="twitter"
-                      src={images.twitter}
-                      className="w-3.5 lg:w-5"
-                  />
-                  </a>
-              </div>
-              <div className="bg-[#393D5E] rounded-md flex justify-center items-center">
-                  <a
-                  href="https://twitter.com/3six9OFFICIAL"
-                  target="_blank"
-                  >
-                  <img
-                      alt="twitter"
-                      src={images.twitter}
-                      className="w-3.5 lg:w-5"
-                  />
-                  </a>
               </div>
               <div className="bg-[#393D5E] rounded-md flex justify-center items-center">
               <a

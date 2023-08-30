@@ -80,7 +80,6 @@ function FeaturedAuctions() {
                 <div className='grow flex-col text-center'>
                   <span className='text-[10px] lg:text-xs font-light'>Remaining Time</span>
                   <span className='flex justify-center'><AuctionCountdown data={data} /></span>
-                  <span className='text-[10px] lg:text-xs font-light'>Remaining Time</span>
                 </div>
             </div>
             </div>

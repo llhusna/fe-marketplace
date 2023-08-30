@@ -34,11 +34,14 @@ import carousel from "../assets/img/HeroCarousel.png";
 import logo from "../assets/img/logo.jpeg";
 
 //footer
-import discord from "../assets/img/Discord-Icon.svg";
+import discord from "../assets/img/discord.svg";
 import instagram from "../assets/img/Instagram-Icon.svg";
 import telegram from "../assets/img/Telegram-Icon.svg";
 import medium from "../assets/img/Medium-Icon.svg";
-import twitter from "../assets/img/Twitter-Icon.svg";
+import twitter from "../assets/img/twitter.svg";
+import facebook from "../assets/img/facebook.svg";
+import globalsite from "../assets/img/global.svg";
+
 
 export default {
   hero,
@@ -76,5 +79,7 @@ export default {
   badge,
   addcollection,
   pulse,
-  shapes
+  shapes,
+  facebook,
+  globalsite
 };

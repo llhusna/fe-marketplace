@@ -95,56 +95,57 @@ export const Profile = () => {
       </div>
 
           <div className="flex flex-col md:col-span-2 -translate-x-20 w-[110%] mx-6 md:mx-0">
-            <div className=''>
+            <div>
                 <div className="font-medium">About</div>
                 <div className="text-xs lg:text-xs font-light pt-6">
                   {profile.bio}
-                  <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibu</span>
                 </div>
 
                 <div className="mt-10 font-medium">Contact Me</div>
                   <div>{profile.email}</div>
-                  <div className="flex mb-10 gap-x-4 justify-start">
-                    <div className="flex justify-center pt-2">
-                      <div className="community-icon-div mr-3">
-                        <a
-                        href="https://twitter.com/3six9OFFICIAL"
-                        target="_blank"
-                        className="pl-0 pr-0"
-                        ><img
-                            alt="twitter"
-                            src={images.twitter}
-                            className="community-icon mr-1"
-                        /></a >
-                        </div>
-                        <div className="community-icon-div mr-3">
-                        <a
-                        href="https://twitter.com/3six9OFFICIAL"
-                        target="_blank"
-                        className="pl-0 pr-0"
-                        ><img
-                            alt="twitter"
-                            src={images.twitter}
-                            className="community-icon mr-1"
-                        /></a >
-                        </div>
-                        <div className="community-icon-div mr-3">
-                        <a
+
+                    <div className="flex mb-10 gap-x-4 justify-start">
+                      <div className="grid grid-cols-3 gap-2 mt-2">
+                      <div className="bg-[#393D5E] rounded-md flex justify-center items-center px-2 py-2">
+                          <a
+                          href="https://www.facebook.com/3six9OFFICIAL"
+                          target="_blank"
+                        >
+                          <img
+                              alt="facebook"
+                              src={images.facebook}
+                              className="w-2.5 lg:w-2.5"
+                          />
+                        </a>
+                      </div>
+                      <div className="bg-[#393D5E] rounded-md flex justify-center items-center px-2">
+                          <a
+                          href="https://twitter.com/3six9OFFICIAL"
+                          target="_blank"
+                          >
+                          <img
+                              alt="twitter"
+                              src={images.twitter}
+                              className="w-3.5 lg:w-5"
+                          />
+                          </a>
+                      </div>
+                      <div className="bg-[#393D5E] rounded-md  flex justify-center items-center">
+                          <a
                             href="https://discord.gg/86uzNjMgPK"
-                            target="_blank"
-                            className="pl-0 pr-0">
+                            target="_blank">
                             <img
                                 alt="discord"
                                 src={images.discord}
-                                className="community-icon mr-1"
+                                className="w-3.5 lg:w-5"
                             />
-                        </a >
-                        </div>
+                          </a >
+                      </div>
                     </div>
-                  </div>
+                    </div>
                 </div>
+            </div>
           </div>
-      </div>
 
      {/*  <div className='grid grid-cols-1 md:grid-cols-3 relative gap-8 mt-20 mx-4 w-full md:w-[90%]'>
       {userNFT.length > 0 ? 

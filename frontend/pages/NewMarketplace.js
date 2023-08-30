@@ -133,24 +133,7 @@ function NewMarketplace() {
           </div>
         </div>
 
-      {/* <div className='text-black pl-4 pr-2 text-center border-2 bg-white border-orange-600 rounded-xl w-[200px] h-[60px]'>
-        <select
-            className='w-full h-full outline-none'
-            onChange={(e) => setFilterOption(e.target.value)}
-            value={filterOption} 
-          
-          >
-            {dropdownOption.map((option, i) => {
-              return (
-                <option value={option.value} key={i} >
-                    {option.label}
-                </option>
-              );
-            })}
-        </select>
-      </div> */}
-
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-x-3 lg:gap-x-6 gap-y-10 mt-10 lg:mt-20 mb-24">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 min-[1920px]:grid-cols-6 gap-x-3 lg:gap-x-6 gap-y-10 mt-10 lg:mt-20 mb-24">
           
           <>
               {filteredNft().map((data, i) => (
@@ -235,7 +218,7 @@ function NewMarketplace() {
                 </div>
 
                 <div className="">
-                            <ul className="flex text-xs pt-1 px-4">
+                            <ul className="flex gap-x-2 min-[1920px]:gap-x-6 text-xs pt-1 px-4">
                                 <li className="rounded-sm">
                                     <a
                                         href="/#/newmarketplace"

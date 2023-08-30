@@ -18,11 +18,13 @@ import { FiArrowDownRight } from "react-icons/fi";
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Overview } from "../components/Collection/Overview";
+import { Announcement } from "../components/Collection/Announcement";
 
 export const NewMarketplaceCollection = (props) => {
 
     const navigate = useNavigate();
-    const [isContainerCollapsed, setIsContainerCollapsed] = useState(true)
+    const [isContainerCollapsed, setIsContainerCollapsed] = useState(false)
     const [searchTerm, setSearchTerm] = useState("");
 
     const { accountId } = useWallet();
@@ -73,7 +75,8 @@ export const NewMarketplaceCollection = (props) => {
           <CoverProfile />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 pl-0 ml-6 mt-16 z-50 absolute w-[95%]">
+    <div>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 pl-0 ml-6 mt-16 z-50 absolute w-[95%] min-[1920px]:mx-20">
           {/* left container */}
           { isContainerCollapsed ?
           <div 
@@ -101,16 +104,16 @@ export const NewMarketplaceCollection = (props) => {
                 </div>
 
                 <div className="flex lg:mt-10 gap-x-4 justify-center">
-                <div className="flex justify-center pt-2">
-                    <div className="community-icon-div mr-3">
+                    <div className="flex justify-center pt-2">
+                        <div className="community-icon-div mr-3">
                         <a
                         href="https://twitter.com/3six9OFFICIAL"
                         target="_blank"
                         className="pl-0 pr-0"
                         ><img
-                            alt="twitter"
-                            src={images.twitter}
-                            className="community-icon mr-1"
+                            alt="facebook"
+                            src={images.facebook}
+                            className="community-icon w-5 h-5"
                         /></a >
                         </div>
                         <div className="community-icon-div mr-3">
@@ -121,7 +124,7 @@ export const NewMarketplaceCollection = (props) => {
                         ><img
                             alt="twitter"
                             src={images.twitter}
-                            className="community-icon mr-1"
+                            className="community-icon w-5 h-5"
                         /></a >
                         </div>
                         <div className="community-icon-div mr-3">
@@ -132,7 +135,7 @@ export const NewMarketplaceCollection = (props) => {
                             <img
                                 alt="discord"
                                 src={images.discord}
-                                className="community-icon mr-1"
+                                className="community-icon w-5 h-5"
                             />
                         </a >
                         </div>
@@ -209,42 +212,42 @@ export const NewMarketplaceCollection = (props) => {
                 </button>
                 
                 <div className="flex lg:mt-40 lg:mb-10 gap-x-4 justify-center">
-                <div className="flex justify-center pt-2">
-                    <div className="community-icon-div mr-3">
-                    <a
-                    href="https://twitter.com/3six9OFFICIAL"
-                    target="_blank"
-                    className="pl-0 pr-0"
-                    ><img
-                        alt="twitter"
-                        src={images.twitter}
-                        className="community-icon mr-1"
-                    /></a >
-                    </div>
-                    <div className="community-icon-div mr-3">
-                    <a
-                    href="https://twitter.com/3six9OFFICIAL"
-                    target="_blank"
-                    className="pl-0 pr-0"
-                    ><img
-                        alt="twitter"
-                        src={images.twitter}
-                        className="community-icon mr-1"
-                    /></a >
-                    </div>
-                    <div className="community-icon-div mr-3">
-                    <a
-                        href="https://discord.gg/86uzNjMgPK"
+                    <div className="flex justify-center pt-2">
+                        <div className="community-icon-div mr-3">
+                        <a
+                        href="https://twitter.com/3six9OFFICIAL"
                         target="_blank"
-                        className="pl-0 pr-0">
-                        <img
-                            alt="discord"
-                            src={images.discord}
-                            className="community-icon mr-1"
-                        />
-                    </a >
+                        className="pl-0 pr-0"
+                        ><img
+                            alt="facebook"
+                            src={images.facebook}
+                            className="community-icon w-5 h-5"
+                        /></a >
+                        </div>
+                        <div className="community-icon-div mr-3">
+                        <a
+                        href="https://twitter.com/3six9OFFICIAL"
+                        target="_blank"
+                        className="pl-0 pr-0"
+                        ><img
+                            alt="twitter"
+                            src={images.twitter}
+                            className="community-icon w-5 h-5"
+                        /></a >
+                        </div>
+                        <div className="community-icon-div mr-3">
+                        <a
+                            href="https://discord.gg/86uzNjMgPK"
+                            target="_blank"
+                            className="pl-0 pr-0">
+                            <img
+                                alt="discord"
+                                src={images.discord}
+                                className="community-icon w-5 h-5"
+                            />
+                        </a >
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
 
@@ -260,8 +263,8 @@ export const NewMarketplaceCollection = (props) => {
 
           {/*  right container */}
           {/* button */}
-          <div className="flex col-span-4 lg:col-span-4 -translate-y-96 lg:-translate-y-10  justify-between">
-            <div className="flex gap-x-10 bg-none rounded-lg h-12 items-center text-sm mx-6 lg:mx-20">
+          <div className="flex col-span-4 lg:col-span-4 -translate-y-96 lg:-translate-y-10 justify-between min-[1920px]:mr-40">
+            <div className="flex gap-x-10 bg-none rounded-lg h-12 items-center text-sm mx-6 lg:mx-12">
             <div
                className={`cursor-pointer  ${
                 currentComponent === 1 ? "border-b-4 border-red-600" : ""
@@ -352,11 +355,13 @@ export const NewMarketplaceCollection = (props) => {
           </div>
         </div>
 
-        <div className="z-10 pt-32">
-                {currentComponent === 1 && <OnSaleCollection />}
-                {currentComponent === 2 && <Collectibles />}
+        <div className="z-10 pt-24 min-h-screen min-[1920px]:mx-20">
+                {currentComponent === 1 && <Overview />}
+                {currentComponent === 2 && <OnSaleCollection />}
                 {currentComponent === 3 && <MyAuction />}
+                {currentComponent === 4 && <Announcement />}
             </div>
+      </div>
       </div>
       {/*  :
     <div>

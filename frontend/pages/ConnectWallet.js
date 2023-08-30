@@ -1,133 +1,85 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { images } from "../constant";
-import { useProfile } from "../hooks/useProfile";
-import { useWallet } from "../hooks/useWallet";
+import { ethers,  utils } from "ethers";
 
-export function SignInPrompt({ onClick }) {
-  return (
-    <div>
-      <span className="text-sm" onClick={onClick}>
-          <img className="w-4 h-4 lg:w-6 lg:h-6" src={images.avatarheader} />
-      </span>
-    </div>
-  );
-}
-
-export function SignOutButton({ onHandleSignOut }) {
-  const { accountId } = useWallet();
-
-  const navigate = useNavigate();
-  const { avatar } = useProfile();
-
-  const [open, setOpen] = useState(false);
-
-  const walletRef = useRef(null);
-
-  const OnSignOut = () => {
-    setOpen(false);
-    onHandleSignOut();
-  };
-
-  const onToggleDropdown = () => {
-    setOpen(!open);
-  };
-
-  useEffect(() => {
-    function handleClick(event) {
-      if (!walletRef.current.contains(event.target)) {
-        setOpen(false);
-      }
-    }
-
-    document.addEventListener("click", handleClick);
-
-    return () => {
-      document.removeEventListener("click", handleClick);
-    };
-  }, []);
-
-  const goTo = (to) => {
-    setOpen(false);
-    navigate(to);
-  };
-
-  return (
-    <div ref={walletRef} onClick={() => onToggleDropdown()}>
-      <div
-        id="dropdownUserAvatarButton"
-        className="flex mx-3 text-sm bg-orange-600 rounded-full md:mr-0"
-      >
-        <img className="w-4 h-4 lg:w-6 lg:h-6 rounded-full"  src={avatar} />
-      </div>
-
-      {open ? (
-        <div
-          id="dropdownAvatar"
-          className="z-50 w-56 absolute m-2 right-10 mt-4 bg-white rounded-xl"
-        >
-          <div className="border-b-2 border-gray-200 rounded-xl shadow-lg">
-            <div className="p-2 flex gap-x-3 border-2 border-orange-600 m-3 rounded-lg text-black">
-              <img className="w-8 h-8 rounded-full" src={avatar} />
-              <span className="block pt-1">Profile</span>
-            </div>
-          </div>
-
-          <ul className="py-1 flex flex-col px-6 text-sm text-gray-700">
-            <li className="flex pt-6">
-              <span>
-                <img src={images.setting} />
-              </span>
-              <a onClick={() => goTo("profile")} className="block pt-1 px-4">
-                Dashboard
-              </a>
-            </li>
-            <li className="flex pt-6">
-              <span>
-                <img src={images.setting} />
-              </span>
-              <a href="/#/mybids" className="block pt-1 px-4">
-                Bids
-              </a>
-            </li>
-            <li className="flex py-6">
-              <span>
-                <img src={images.logout} />
-              </span>
-              <a onClick={OnSignOut} className="block pt-1 px-4">
-                Sign out
-              </a>
-            </li>
-          </ul>
-        </div>
-      ) : (
-        <></>
-      )}
-    </div>
-  );
-}
 
 export const ConnectWallet = () => {
-  const { accountId, signIn, signOut } = useWallet();
-  const [loaded, setLoaded] = useState(false);
+  // usetstate for storing and retrieving wallet details
+  const [data, setdata] = useState({
+    address: "",
+    Balance: null,
+  });
 
-  const onHandleLogin = () => {
-    signIn(process.env.CONTRACT_NAME || "seed.bonebon.testnet");
-  };
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+  // Button handler button for handling a
+  // request event for metamask
+  const btnhandler = () => {
+  
+    // Asking if metamask is already present or not
+    if (window.ethereum) {
+  
+      // res[0] for fetching a first wallet
+      window.ethereum
+        .request({ method: "eth_requestAccounts" })
+        .then((res) => accountChangeHandler(res[0]));
 
-  const onHandleSignOut = () => {
-    signOut();
-  };
+      setIsAuthenticated(true)
 
-  useEffect(() => {
-    if (accountId) {
-      setLoaded(true);
+    } else {
+      alert("install metamask extension!!");
     }
-  }, [accountId, loaded]);
-
-  if (!accountId) {
-    return <SignInPrompt onClick={() => onHandleLogin()} />;
-  } else {
-    return <SignOutButton onHandleSignOut={onHandleSignOut} />;
-  }
+  };
+  
+  // getbalance function for getting a balance in
+  // a right format with help of ethers
+  let getbalance = (address) => {
+  
+    // Requesting balance method
+    window.ethereum
+      .request({ 
+        method: "eth_getBalance", 
+        params: [address, "latest"] 
+      })
+      .then((balance) => {
+        // Setting balance
+        setdata({
+          Balance: utils.formatEther(balance),
+        });
+      });
+  };
+  
+  // Function for getting handling all events
+  const accountChangeHandler = (account) => {
+    // Setting an address data
+    setdata({
+      address: account,
+    });
+  
+    // Setting a balance
+    getbalance(account);
+  };
+  
+  return (
+    <div className="App">
+      {/* Calling all values which we 
+       have stored in usestate */}
+  
+      <div className="text-center">
+        {!isAuthenticated ?
+          <div onClick={btnhandler} variant="primary">
+              <img className="w-4 h-4 lg:w-6 lg:h-6" src={images.avatarheader} />
+          </div>
+          :
+          <div className="flex">
+            <div className="block truncate w-20">
+            <strong>{data.address}</strong>
+          </div>
+          </div>
+        }
+      </div>
+    </div>
+  );
 };
+ 

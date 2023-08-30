@@ -371,7 +371,7 @@ main.please-wait .loader:after{
 @media (min-width: 1900px) {
   .body-container {
     padding: 1em 6em 1em 6em;
-    margin: 0 10%;
+    margin: 0 6%;
   }
 }
 
