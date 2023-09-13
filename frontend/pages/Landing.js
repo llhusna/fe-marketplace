@@ -27,7 +27,7 @@ export default function Landing() {
 
 
         {/* floating navigation bar  */}
-        <div
+          <div
           className="m-auto
              bg-gray-600 bg-opacity-75 
              text-white text-center text-sm
@@ -37,7 +37,9 @@ export default function Landing() {
              bottom-10
              h-11
              w-[28%]
-             min-[1920px]:w-[26%]">
+             min-[1920px]:w-[26%]
+             invisible
+             md:visible">
             
             <div className='flex items-center justify-between'>
                 <div className='ml-6'>

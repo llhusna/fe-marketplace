@@ -8,8 +8,8 @@ export const Trending = () => {
 
   return (
     <div className='text-white my-20'>
-     <div className='flex justify-between'>
-         <div className='flex text-2xl font-semibold'>
+     <div className='grid grid-cols-2'>
+         <div className='flex col-span-1 text-2xl font-semibold'>
                 <div  
                     className={`rounded-full pr-4 cursor-pointer  ${
                     currentComponent === 1 ? "text-white" : "text-gray-500"
@@ -36,7 +36,7 @@ export const Trending = () => {
                 </div>
         </div>
 
-        <div className='flex gap-x-2 text-xs text-center font-light mt-6'>
+        <div className='flex col-span-2 md:col-span-1 gap-x-2 text-xs text-center font-light mt-6 justify-start md:justify-end pb-10 md:pb-0'>
               <div className='flex items-center gap-2 border-[1px] border-[#6B6B6B] rounded-lg p-2'>
                 <span>24 hours</span>
                     <MdArrowDropDown
@@ -60,39 +60,53 @@ export const Trending = () => {
     
     {currentComponent === 1 && 
     <>
-    <table className="table-auto w-full">
-    <thead className='text-sm'>
-        <tr>
-            <th scope="col" className="flex justify-start font-light pb-2">Collection</th>
-            <th scope="col" className="font-light pb-2">Volume</th>
-            <th scope="col" className="text-right font-light pb-2">Floor Price</th>
-        </tr>
-    </thead>
-    {market.data.result.map((data, i) => (
-    <tbody  key={i} className='text-xs font-light'>
-        <tr className="w-full">
-            <td scope="col">
-                <div className='flex gap-x-2 items-center'>
-                <span><img className="trending-avatar-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/></span>
-                <span className='block truncate'>{data.transaction_of_collectible.collectible_name}</span>
-                </div>
-            </td>
-            <td scope="col" className="md:px-16 lg:px-28 whitespace-nowrap text-center">{data.action_type}</td>
-            
-            <td scope="col" className="whitespace-nowrap text-right">{Number((Math.round(data.unit_price / 1000000000000)).toFixed(3))}</td>
-            {/* <td><p className='truncate'>{data.activity_by}</p></td> */}
-            <td scope="col" className='flex gap-x-2 lg:gap-x-6 py-2 justify-end'>
-                <span><img className="block trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/></span>
-                <span><img className="block trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/></span>
-                <span><img className="block trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/></span>
-                <span><img className="block trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/></span>
-                <span><img className="block trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/></span>
-                <span><img className="block trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/></span>
-            </td>
-        </tr>
-    </tbody>
-    ))}
-    </table>
+     <div class="overflow-x-auto">
+            <table class="min-w-full text-xs">
+              <thead class="ltr:text-left rtl:text-right">
+              <tr>
+                <th scope="col" className="flex justify-start font-light pb-2">Collection</th>
+                <th scope="col" className="font-light pb-2">Volume</th>
+                <th scope="col" className=" font-light pb-2">Floor Price</th>
+              </tr>
+              </thead>
+
+              
+              {market.data.result.map((data, i) => (
+                <tbody key={i} className="divide-y divide-gray-200">
+                  <tr className="w-full">
+                    <td scope="col" className="pr-10 py-4 whitespace-nowrap">
+                      <div className='flex gap-x-2 items-center'>
+                        <span><img className="trending-avatar-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/></span>
+                        <span className='block truncate'>{data.transaction_of_collectible.collectible_name}</span>
+                      </div>
+                    </td>
+
+                    <td scope="col" className="md:px-16 lg:px-28 whitespace-nowrap text-center">{data.action_type}</td>
+
+                    <td
+                      scope="col"
+                      className="px-10 py-4 whitespace-nowrap text-center"
+                    >
+                      {Number(
+                        Math.round(data.unit_price / 1000000000000).toFixed(3)
+                      )}
+                    </td>
+
+                    <td scope="col" className="flex py-2 justify-end">
+                      <div className='flex  gap-x-2 lg:gap-x-6  items-center'>
+                        <img className="trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/>
+                        <img className="trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/>
+                        <img className="trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/>
+                        <img className="trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/>
+                        <img className="trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/>
+                        <img className="trending-size z-10" src={data.transaction_of_collectible.ipfs_media_path}/>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              ))}       
+            </table>
+          </div>
     </>
     }
 

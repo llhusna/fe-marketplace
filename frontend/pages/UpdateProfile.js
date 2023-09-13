@@ -538,11 +538,11 @@ export const UpdateProfile = () => {
 
     {/* new design update profile */}
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-1 body-container mx-56 min-[1920px]:mx-96">
+        <div className="grid grid-cols-1 md:grid-cols-1  md:mx-56 min-[1920px]:mx-96">
 
                 <div className="flex relative justify-center items-center px-4 py-8">
                   <div className="w-full max-w-3xl mx-auto bg-[#242424]/60 z-99 rounded-md border-[1px] border-red-600">
-                    <div className="mt-16 px-10 flex flex-col justify-center text-white">
+                    <div className="mt-16 px-4 md:px-10 flex flex-col justify-center text-white">
                       <h4 className="text-2xl text-center font-semibold pb-10">
                         EDIT PROFILE
                       </h4>

@@ -35,10 +35,10 @@ export const MainProfile = () => {
           <CoverProfile />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 relative gap-4 pl-0 ml-10 mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-4 relative gap-4 pl-0 md:ml-10 body-container mt-10">
           {/* left container */}
           <div 
-            className="flex flex-col col-span-4 lg:col-span-1 w-[100%] rounded-sm border-[1px] border-red-600 text-white py-4 px-4 ml-10 lg:ml-0 -translate-y-96 mt-4 max-h-[1000px] z-50 w-[75%]"
+            className="flex flex-col col-span-4 lg:col-span-1 w-[100%] rounded-sm border-[1px] border-red-600 text-white py-4 px-4 md:ml-10 lg:ml-0 -translate-y-96 mt-4 max-h-[1000px] z-50 w-full md:w-[75%]"
             style={{background:"rgba(41, 41, 41, 0.5)", backdropFilter:"blur(50px)"}}
             >
             <div>
@@ -144,64 +144,67 @@ export const MainProfile = () => {
 
           {/*  right container */}
           {/* button */}
-          <div className="flex flex-col col-span-4 lg:col-span-3 -translate-y-96 lg:-translate-y-10 -translate-x-8">
-          <div className='grid grid-cols-7 font-light bg-[#242424] border-[1px] border-[#FF1F00] rounded-lg text-[10px] lg:text-xs lg:w-[70%] p-0.5'>
-                <div  
-                    className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
-                    currentComponent === 1 ? "bg-red-600" : "bg-transparent"
-                    }`}
-                    onClick={() => setCurrentComponent(1)}
-                    >
-                      Creations
-                </div>
-                <div  
-                    className={`rounded-lg h-8 lg:h-10 px-2 cursor-pointer flex items-center justify-center ${
-                    currentComponent === 2 ? "bg-red-600" : "bg-transparent"
-                    }`}
-                    onClick={() => setCurrentComponent(2)}
-                    >
-                      Collections
-                </div>
-                <div  
-                    className={`rounded-lg h-8 lg:h-10 px-2 cursor-pointer flex items-center justify-center ${
-                    currentComponent === 3 ? "bg-red-600" : "bg-transparent"
-                    }`}
-                    onClick={() => setCurrentComponent(3)}
-                    >
-                      On Sales
-                </div>
-                <div  
-                    className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
-                    currentComponent === 4 ? "bg-red-600" : "bg-transparent"
-                    }`}
-                    onClick={() => setCurrentComponent(4)}
-                    >
-                      Favourites
-                </div>
-                <div  
-                    className={`rounded-lg h-8 lg:h-10 px-2 cursor-pointer flex items-center justify-center ${
-                    currentComponent === 5 ? "bg-red-600" : "bg-transparent"
-                    }`}
-                    onClick={() => setCurrentComponent(5)}
-                    >
-                      My Auctions
-                </div>
-                <div  
-                    className={`rounded-lg h-8 lg:h-10 px-2 cursor-pointer flex items-center justify-center ${
-                    currentComponent === 6 ? "bg-red-600" : "bg-transparent"
-                    }`}
-                    onClick={() => setCurrentComponent(6)}
-                    >
-                      Activities
-                </div><div  
-                    className={`rounded-lg h-8 lg:h-10 px-2 cursor-pointer flex items-center justify-center ${
-                    currentComponent === 7 ? "bg-red-600" : "bg-transparent"
-                    }`}
-                    onClick={() => setCurrentComponent(7)}
-                    >
-                      Profiles
-                </div>
-            </div>
+          <div className="flex flex-col col-span-4 lg:col-span-3 -translate-y-96 lg:-translate-y-10 md:-translate-x-8">
+
+          <div class="inline-flex overflow-x-auto md:grid md:grid-cols-7 font-light bg-[#242424] border-[1px] border-[#FF1F00] rounded-lg text-[10px] lg:text-xs w-[100%] lg:w-[70%] p-0.5" role="group" >
+            <button type="button"  
+                className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
+                currentComponent === 1 ? "bg-red-600" : "bg-transparent"
+                  }`}
+                onClick={() => setCurrentComponent(1)}
+               >
+              Creations
+            </button>
+            <button type="button"  
+                className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
+                  currentComponent === 2 ? "bg-red-600" : "bg-transparent"
+                }`}
+                onClick={() => setCurrentComponent(2)}
+                >
+                  Collections
+            </button>
+            <button type="button"  
+                className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
+                  currentComponent === 3 ? "bg-red-600" : "bg-transparent"
+                }`}
+                onClick={() => setCurrentComponent(3)}
+                >
+                  On Sales
+            </button>
+            <button type="button"  
+                className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
+                  currentComponent === 4 ? "bg-red-600" : "bg-transparent"
+                }`}
+                onClick={() => setCurrentComponent(4)}
+                >
+                  Favourites
+            </button>
+            <button type="button"  
+                className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
+                  currentComponent === 5 ? "bg-red-600" : "bg-transparent"
+                      }`}
+                  onClick={() => setCurrentComponent(5)}
+                >
+                  My Auctions
+            </button>
+            <button type="button"  
+                className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
+                  currentComponent === 6 ? "bg-red-600" : "bg-transparent"
+                }`}
+                onClick={() => setCurrentComponent(6)}
+                >
+                  Activities
+            </button>
+            <button type="button"  
+                className={`rounded-lg h-8 lg:h-10 cursor-pointer px-2 flex items-center justify-center ${
+                  currentComponent === 7 ? "bg-red-600" : "bg-transparent"
+                }`}
+                onClick={() => setCurrentComponent(7)}
+                >
+                  Profiles
+            </button>
+          </div>
+
 
             <div className="py-6">
               {/* Content */}

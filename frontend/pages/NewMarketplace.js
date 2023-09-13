@@ -111,18 +111,14 @@ function NewMarketplace() {
 
       
      {/*  slider button */}
-     <div className="grid grid-cols-1 mx-4 lg:mx-16 min-[1920px]:mx-20 min-[1920px]:pt-20">
-          <div className="flex gap-x-1 lg:gap-x-2 w-full">
+     {/* <div className='grid'>
+     <div className="flex mx-4 lg:mx-16 min-[1920px]:mx-20 min-[1920px]:pt-20 overflow-x-auto">
+          <div className="grid grid-cols-10 flex gap-x-2 lg:gap-x-2 w-full overflow-x-auto">
             {slideOption
               .map((option, index) => (
                 <button
                   key={index}
-                 /*  className={`w-[18%] flex-nowrap flex-none rounded-full text-center py-3 border-2 ${
-                    slideSelected === option.value
-                      ? "bg-orange-600 text-white border-orange-600"
-                      : "bg-white text-orange-600 border-orange-600 hover:bg-orange-600 hover:text-white"
-                  } cursor-pointer`} */
-                  className='w-1/3 rounded-sm lg:rounded-md bg-[#373737] text-white text-[8px] lg:text-xs py-2 lg:py-4 text-center hover:bg-red-600'
+                  className='col-span-1 rounded-sm lg:rounded-md bg-[#373737] text-white text-[8px] lg:text-xs py-0 md:py-2 lg:py-4 text-center hover:bg-red-600'
                   onClick={() => {
                     setSlideSelected(option.value);
                   }}
@@ -131,6 +127,22 @@ function NewMarketplace() {
                 </button>
               ))}
           </div>
+        </div>
+        </div> */}
+
+     <div className="grid grid-cols-5 md:grid-cols-10 gap-x-2 text-center mx-4 lg:mx-16 min-[1920px]:mx-20 min-[1920px]:pt-20 overflow-x-auto no-wrap">
+            {slideOption
+              .map((option, index) => (
+                <button
+                  key={index}
+                  className='col-span-1 mt-2 flex items-center rounded-sm lg:rounded-md bg-[#373737] text-white justify-center text-[8px] lg:text-xs py-2 md:py-2 lg:py-4 text-center hover:bg-red-600 overflow-x-auto no-wrap'
+                  onClick={() => {
+                    setSlideSelected(option.value);
+                  }}
+                >
+                  {option.label}
+                </button>
+              ))}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 min-[1920px]:grid-cols-6 gap-x-3 lg:gap-x-6 gap-y-10 mt-10 lg:mt-20 mb-24">
@@ -208,7 +220,9 @@ function NewMarketplace() {
              inset-x-0
              bottom-10
              h-11
-             w-[28%]">
+             w-[28%]
+             invisible
+             md:visible">
             
             <div className='flex items-center justify-between'>
                 <div className='ml-6'>

@@ -24,9 +24,9 @@ export const CreateCollectible = () => {
       exit={{opacity: 1}}
       transition={{ duration: 0.7 }}
     >
-      <div className="mx-16 min-[1920px]:mx-48">
+      <div className="px-10 md:mx-16 min-[1920px]:mx-48">
         <div className="grid grid-cols-3 md:grid-cols-3 py-20">
-          <div className="md:col-span-2 mr-20">
+          <div className="col-span-3 md:col-span-2 mr-2 md:mr-20">
             <a
               href="/"
               className="bg-white text-black font-semibold rounded-xl py-2 px-8 hover:border-2 hover:border-orange-600 "
@@ -40,24 +40,24 @@ export const CreateCollectible = () => {
               or “Multiple” if you want to sell one collectible multiple times
             </div>
 
-            <div className="flex text-orange-600 font-bold text-lg gap-6 py-10">
+            <div className="grid grid-cols-2 text-orange-600 font-bold text-lg gap-6 py-10 md:mr-60">
               <div
-                className="flex flex-col bg-white py-16 px-16 rounded-[35px] cursor-pointer"
+                className="col-span-1 flex flex-col bg-white py-16 justify-center rounded-[35px] cursor-pointer text-center"
                 onClick={handleSingleClick}
               >
-                <img src={images.single} className="h-10 w-10 mx-auto" />
+                <img src={images.single} className="h-6 w-6 md:h-10 md:w-10 mx-auto" />
                 Single
               </div>
               <div
-                className="flex flex-col bg-white py-16 px-14 rounded-[35px] cursor-pointer"
+                className="col-span-1 flex flex-col bg-white py-16 rounded-[35px] cursor-pointer text-center"
                 onClick={handleMultipleClick}
               >
-                <img src={images.multiple} className="h-10 w-10 mx-auto" />
+                <img src={images.multiple} className="h-6 w-6 md:h-10 md:w-10 mx-auto" />
                 Multiple
               </div>
             </div>
 
-            <div className="flex items-center bg-white rounded-xl p-5 gap-4 font-semibold text-gray-500">
+            <div className="flex items-center bg-white rounded-xl p-5 gap-4 font-semibold text-gray-500 w-[300px] md:w-full">
               <span>
                 <img src={images.checkmark} />
               </span>
@@ -68,7 +68,7 @@ export const CreateCollectible = () => {
             </div>
           </div>
 
-          <div className="flex md:col-span-1">
+          <div className="flex col-span-3 md:col-span-1 hidden md:block">
             <div className="relative">
               <img className="object-fill" alt="Artworks" src={images.create} />
               <div className="mt-10 mb-20 main-text-size text-grey text-weight-500">

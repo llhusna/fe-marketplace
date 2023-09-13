@@ -57,7 +57,7 @@ export const HeaderLayout = () => {
 
   return (
     <>
-    <header className='grid md:grid-cols-1 px-4 lg:px-10 py-2 invisible md:visible'>
+    <header className='grid md:grid-cols-1 px-4 lg:px-10 py-2'>
         <div className='flex justify-between items-center'>
             <div>
                 <Link to="/">
@@ -65,7 +65,7 @@ export const HeaderLayout = () => {
                 </Link>
             </div>
 
-            <div className="content-center -translate-x-20 lg:translate-x-20"><SearchHeader /></div>
+            <div className="content-center -translate-x-20 lg:translate-x-20 hidden md:block"><SearchHeader /></div>
 
             <div className='flex items-center gap-x-2 lg:gap-x-4'>
          {/* <button className='bg-white text-red-600 text-xs py-2 px-4'>Rainbow Bridge</button> */}
@@ -79,10 +79,10 @@ export const HeaderLayout = () => {
               </span>
             </a>
                 <div>
-                    <ConnectWallet />
+                    <img className="w-4 h-4 lg:w-6 lg:h-6" src={images.avatarheader} />
                 </div>
                 <div>
-                    <img className="w-4 lg:w-6" src={images.wallet} />
+                    <ConnectWallet />
                 </div>
             </div>
 

@@ -13,6 +13,7 @@ import { MdFilterListAlt } from "react-icons/md";
 
 
 function Auctions() {
+  const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
 
   const [openBottomNav, setOpenBottomNav] = useState(false);
   const navRef = useRef(null);
@@ -20,6 +21,7 @@ function Auctions() {
   const onToggleBottomNav = () => {
     setOpenBottomNav(!openBottomNav);
   };
+  
 
   useEffect(() => {
     function handleClick(event) {
@@ -160,19 +162,13 @@ function Auctions() {
   return (
     <>
       <div className="body-container min-h-screen">
-
+{/* 
         <div className="grid grid-cols-1 lg:mx-16">
             <div className="flex gap-x-1 lg:gap-x-2 w-full">
               {slideOption
-                /* .slice(currentIndex, currentIndex + 5) */
                 .map((option, index) => (
                   <button
                     key={index}
-                   /*  className={`w-[18%] flex-nowrap flex-none rounded-full text-center py-3 border-2 ${
-                      slideSelected === option.value
-                        ? "bg-orange-600 text-white border-orange-600"
-                        : "bg-white text-orange-600 border-orange-600 hover:bg-orange-600 hover:text-white"
-                    } cursor-pointer`} */
                     className='w-1/3 rounded-md bg-[#373737] text-white text-[8px] lg:text-xs py-3 lg:py-4 text-center hover:bg-red-600'
                     onClick={() => {
                       setSlideSelected(option.value);
@@ -182,7 +178,22 @@ function Auctions() {
                   </button>
                 ))}
             </div>
-          </div>
+          </div> */}
+
+          <div className="grid grid-cols-5 md:grid-cols-10 gap-x-2 text-center mx-4 lg:mx-16 min-[1920px]:mx-20 min-[1920px]:pt-20 overflow-x-auto no-wrap">
+            {slideOption
+              .map((option, index) => (
+                <button
+                  key={index}
+                  className='col-span-1 mt-2 flex items-center rounded-sm lg:rounded-md bg-[#373737] text-white justify-center text-[8px] lg:text-xs py-2 md:py-2 lg:py-4 text-center hover:bg-red-600 overflow-x-auto no-wrap'
+                  onClick={() => {
+                    setSlideSelected(option.value);
+                  }}
+                >
+                  {option.label}
+                </button>
+              ))}
+        </div>
 
         {/* filter function */}
        {/*  <div className="flex justify-start items-center w-full mx-auto ">
@@ -296,10 +307,18 @@ function Auctions() {
           </div>
         </div> */}
 
+        
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-x-3 lg:gap-x-6 gap-y-10 mt-10 lg:mt-20 mb-24">           
             {filteredNft().map((data, i) => (
         
-                <div key={i} className="flex flex-col md:col-span-1 bg-transparent text-white rounded-lg relative hover:border-rose-600 hover:border-[1px] hover:border-rose-600 card-background">
+                <div 
+                  key={i} 
+                  className="flex flex-col md:col-span-1 bg-transparent text-white rounded-lg relative 
+                    hover:border-rose-600 hover:border-[1px] hover:border-rose-600 card-background
+                    "
+                    onMouseEnter={() => setHoveredCardIndex(i)}
+                    onMouseLeave={() => setHoveredCardIndex(null)}
+                  >
                   <div className='flex items-center pb-2'>
                     <img src={data.auctions_of_collectible.ipfs_media_path} className="trending-avatar-size py-2 pr-3 pl-1"/>
                     <div> 
@@ -315,6 +334,7 @@ function Auctions() {
                   >
                     {/* <img className="object-cover object-center h-62 w-96 rounded-md" src={data.auctions_of_collectible.ipfs_media_path} /> */}
                     <div className='absolute bottom-0 w-full'>
+                    {hoveredCardIndex === i ? (
                       <div className='m-2 rounded-lg opaque-bg py-1 lg:pt-2 lg:pb-4'>
                         <div className='flex'>
                           <div className='grow pl-2 lg:pl-4 border-r-[1px]'>
@@ -326,8 +346,12 @@ function Auctions() {
                             <span className='text-[10px] lg:text-[11px] font-semibold text-opensans'>Remaining Time</span>
                             <span className='flex justify-center'><AuctionCountdown data={data} /></span>
                           </div>
+                        </div>
                       </div>
-                      </div>
+                    )
+                      :
+                      <></>
+                    }
                     </div>
                   </div>
   
@@ -370,7 +394,9 @@ function Auctions() {
              inset-x-0
              bottom-10
              px-2
-             w-[28%]"
+             w-[28%]
+             invisible
+             md:visible"
           style={{background: "rgba(116, 116, 116, 0.7)"}}
              >
             <div className='flex'>

@@ -99,7 +99,7 @@ export const Creation = () => {
  
     <>
     <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 w-[90%]">
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center mx-20 md:mx-0">
          <div onClick={handleCollectible} className='flex flex-col justify-center bg-white hover:bg-orange-600 hover:text-white border-2 border-orange-600 rounded-3xl text-orange-600 py-6 px-10'>
             <div className='text-center'>
                 <div className='font-bold text-5xl'>+</div>

@@ -22,7 +22,7 @@ import { HeaderLayout } from "./components/Layout/HeaderLayout";
 import useIpfsFactory from "./hooks/useIpfsFactory";
 import { MarketplaceCollection } from "./pages/MarketplaceCollection";
 import { AuctionCollection } from "./pages/AuctionCollection";
-import { SingleCreation } from "./pages/SingleCreation";
+import { NewSingleCreation } from "./pages/NewSingleCreation";
 import MyBids from "./pages/MyBids";
 import FAQs from "./pages/FAQs";
 import { SingleCollectible } from "./pages/SingleCollectible";
@@ -86,6 +86,7 @@ export default function App() {
           <Route exact path="newcollection">
             <Route path=":id" element={<NewMarketplaceCollection />} />
           </Route>
+          
 
           <Route exact path="collectible">
             <Route path=":id" element={<SingleCollectible />} />
@@ -94,8 +95,12 @@ export default function App() {
           <Route path="auction/:id" element={<AuctionCollection />} />
 
           {/* <Route path="creation" element={<SingleCreation />} /> */}
-          <Route exact path="creation">
+          {/* <Route exact path="creation">
             <Route path=":id" element={<SingleCreation />} />
+          </Route> */}
+
+          <Route exact path="creation">
+            <Route path=":id" element={<NewSingleCreation />} />
           </Route>
 
           <Route exact index path="create" element={<CreateCollectible />} />

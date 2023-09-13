@@ -86,7 +86,7 @@ export const StatsDashboard = () => {
                     {market.data.result.map((data, i) => (
                     <tbody key={i} className='text-[10px] lg:text-xs'>
                         <tr className="w-full pt-2">
-                            <td scope="col" className="pr-4 whitespace-nowrap">{i}</td>
+                            <td scope="col" className="pr-4 whitespace-nowrap">{i+1}</td>
                             <td scope="col">
                                 <div className='flex gap-x-2 items-center my-1'>
                                 <span><img className="trending-avatar-size" src={data.transaction_of_collectible.ipfs_media_path}/></span>

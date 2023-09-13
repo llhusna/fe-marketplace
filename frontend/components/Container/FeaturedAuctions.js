@@ -3,58 +3,74 @@ import { Link } from 'react-router-dom'
 import artwork from "../../data/landing/artwork";
 import auction from "../../data/auction.json";
 import AuctionCountdown from "./Countdown";
+import { useNavigate, Link } from "react-router-dom";
 
 function FeaturedAuctions() {
+  const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
   const [currentComponent, setCurrentComponent] = useState('A');
 
   useEffect(() => {
 }, [currentComponent]);
 
+const [selectedNFT, setSelectedNFT] = useState(null);
+const navigate = useNavigate();
+
+const handleNFTClick = (data) => {
+  setSelectedNFT(data);
+  navigate(`/auctions/${data.auctions_of_collectible.collectible_uuid}`, {
+    state: { data },
+  });
+};
+
   return (
     <>
     <div className=''>
-      <div className='flex justify-between items-center'>
-        <div className='flex gap-x-10 items-center'>
-            <span className='font-bold text-xl lg:text-3xl'>Auctions</span>
-            <div className='flex font-light bg-transparent border-[1px] border-[#6B6B6B] rounded-lg text-[10px] lg:text-xs'>
-                <div  
-                    className={`rounded-lg h-8 lg:h-10 cursor-pointer px-6 flex items-center  ${
-                    currentComponent === 'A' ? "bg-red-600" : "bg-transparent"
-                    }`}
-                    onClick={() => setCurrentComponent('A')}
-                  >
-                    Live
+        <div className='grid grid-cols-5 flex items-center'>
+              <span className='flex col-span-5 md:col-span-1 font-bold text-xl lg:text-3xl'>Auctions</span>
+              <div className='flex col-span-3 md:col-span-3 translate-x-0 lg:-translate-x-28 pt-2 md:pt-0'>
+                <div className='flex font-light bg-transparent border-[1px] border-[#6B6B6B] rounded-lg text-[10px] lg:text-xs'>
+                    <div  
+                        className={`rounded-lg h-8 lg:h-10 cursor-pointer px-6 flex items-center  ${
+                        currentComponent === 'A' ? "bg-red-600" : "bg-transparent"
+                        }`}
+                        onClick={() => setCurrentComponent('A')}
+                      >
+                        Live
+                    </div>
+                    <div  
+                        className={`rounded-lg h-8 lg:h-10 px-6 cursor-pointer flex items-center  ${
+                        currentComponent === 'B' ? "bg-red-600" : "bg-transparent"
+                        }`}
+                        onClick={() => setCurrentComponent('B')}
+                      >
+                        Upcoming
+                    </div>
+                    <div  
+                        className={`rounded-lg h-8 lg:h-10 px-6 cursor-pointer flex items-center  ${
+                        currentComponent === 'C' ? "bg-red-600" : "bg-transparent"
+                        }`}
+                        onClick={() => setCurrentComponent('C')}
+                      >
+                        Ended
+                    </div>
                 </div>
-                <div  
-                    className={`rounded-lg h-8 lg:h-10 px-6 cursor-pointer flex items-center  ${
-                    currentComponent === 'B' ? "bg-red-600" : "bg-transparent"
-                    }`}
-                    onClick={() => setCurrentComponent('B')}
-                  >
-                    Upcoming
-                </div>
-                <div  
-                    className={`rounded-lg h-8 lg:h-10 px-6 cursor-pointer flex items-center  ${
-                    currentComponent === 'C' ? "bg-red-600" : "bg-transparent"
-                    }`}
-                    onClick={() => setCurrentComponent('C')}
-                  >
-                    Ended
-                </div>
-              {/*   <button className='button-slide rounded-lg h-10 px-8' onClick={() => setCurrentComponent('A')}>Live</button>
-                <button className='button-slide rounded-lg h-10 px-8' onClick={() => setCurrentComponent('B')}>Upcoming</button>
-                <button className='button-slide rounded-lg h-10 px-8' onClick={() => setCurrentComponent('C')}>Ended</button> */}
-            </div>
+              </div>
+              <span className='col-span-2 flex md:col-span-1 justify-end pt-2 md:pt-0'><Link className='text-[10px] lg:text-sm border-[1px] border-[#6B6B6B] px-4 py-2 rounded-lg' to="/Marketplace">View all</Link></span>     
         </div>
-        <span><Link className='text-[10px] lg:text-sm border-[1px] border-[#6B6B6B] px-4 py-2 rounded-lg' to="/Marketplace">View all</Link></span>
-      </div>
       
       {currentComponent === 'A' || 'B' || 'C' ? 
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-x-3 lg:gap-x-6 gap-y-10 mt-6 lg:mt-10 mb-24">           
       {auction.result.map((data, i) => (
 
-          <div key={i} className="flex flex-col md:col-span-1 bg-transparent text-white rounded-lg relative hover:border-rose-600 hover:border-[1px] hover:border-rose-600 card-background">
+          <div  
+            key={i} 
+            className="flex flex-col md:col-span-1 bg-transparent text-white rounded-lg relative 
+              hover:border-rose-600 hover:border-[1px] hover:border-rose-600 card-background
+              "
+              onMouseEnter={() => setHoveredCardIndex(i)}
+              onMouseLeave={() => setHoveredCardIndex(null)}
+            >
             <div className='flex items-center pb-2'>
               <img src={data.auctions_of_collectible.ipfs_media_path} className="trending-avatar-size py-2 pr-3 pl-1"/>
               <div> 
@@ -70,19 +86,23 @@ function FeaturedAuctions() {
             >
               {/* <img className="object-cover object-center h-62 w-96 rounded-md" src={data.auctions_of_collectible.ipfs_media_path} /> */}
               <div className='absolute bottom-0 w-full'>
-            <div className='m-2 rounded-lg opaque-bg py-1 lg:py-3'>
-              <div className='flex'>
-                <div className='grow pl-2 lg:pl-4 border-r-[1px]'>
-                  <span className='text-[10px] lg:text-xs'>Current Bid</span>
-                  <div className='text-xs text-sm'>4.06 ETH</div>
-                  <div className='text-[10px] lg:text-xs font-light'>5100 usd</div>
+              { hoveredCardIndex === i ? (
+                <div className='m-2 rounded-lg opaque-bg py-1 lg:py-3'>
+                  <div className='flex'>
+                    <div className='grow pl-2 lg:pl-4 border-r-[1px]'>
+                      <span className='text-[10px] lg:text-xs'>Current Bid</span>
+                      <div className='text-xs text-sm'>4.06 ETH</div>
+                      <div className='text-[10px] lg:text-xs font-light'>5100 usd</div>
+                    </div>
+                    <div className='grow flex-col text-center'>
+                      <span className='text-[10px] lg:text-xs font-light'>Remaining Time</span>
+                      <span className='flex justify-center'><AuctionCountdown data={data} /></span>
+                    </div>
                 </div>
-                <div className='grow flex-col text-center'>
-                  <span className='text-[10px] lg:text-xs font-light'>Remaining Time</span>
-                  <span className='flex justify-center'><AuctionCountdown data={data} /></span>
                 </div>
-            </div>
-            </div>
+              ):
+              <></>
+              }
             </div>
             </div>
 

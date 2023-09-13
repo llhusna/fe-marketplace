@@ -50,16 +50,29 @@ export const ConnectWallet = () => {
       });
   };
   
-  // Function for getting handling all events
-  const accountChangeHandler = (account) => {
-    // Setting an address data
+  
+ /*  const accountChangeHandler = (account) => {
     setdata({
       address: account,
     });
   
-    // Setting a balance
     getbalance(account);
-  };
+  }; */
+
+  const accountChangeHandler = async () => {
+    if (window.ethereum) {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const address = await signer.getAddress();
+      const balanceWei = await provider.getBalance(address);
+      const balanceEther = formatEther(balanceWei);
+
+      setdata({
+        address: address,
+        balance: balanceEther,
+      })
+    }
+  }
   
   return (
     <div className="App">
@@ -69,11 +82,11 @@ export const ConnectWallet = () => {
       <div className="text-center">
         {!isAuthenticated ?
           <div onClick={btnhandler} variant="primary">
-              <img className="w-4 h-4 lg:w-6 lg:h-6" src={images.avatarheader} />
+              <img className="w-4 lg:w-6" src={images.wallet} />
           </div>
           :
           <div className="flex">
-            <div className="block truncate w-20">
+            <div className="block truncate w-20 text-white">
             <strong>{data.address}</strong>
           </div>
           </div>

@@ -58,7 +58,7 @@ export const Dashboard = () => {
 
   return (
     <div>
-      <div className="ml-1 mr-8 w-[90%]">
+      <div className="ml-1 mr-8 w-full md:w-[90%]">
         <div className="py-6 text-gray-300 text-lg">Profile Overview</div>
         <div>
           <div className="grid grid-cols-2 md:grid-cols-3 rounded-lg relative py-6 gap-6 text-black">
@@ -101,19 +101,9 @@ export const Dashboard = () => {
 
         <div className="bg-white text-black rounded-md p-6 mt-16">
           <div className="py-6 text-[20px] font-semibold">Market Activity</div>
-
-          {/* <div className='flex justify-between text-xs text-gray-500 font-medium h-28'>
-                    <span>EVENT</span>
-                    <span>ITEM</span>
-                    <span>PRICE</span>
-                    <span>QTY</span>
-                    <span>FROM</span>
-                    <span>TO</span>
-                    <span>DATE</span>
-                </div> */}
-
-          <table className="table-auto w-full">
-            <thead className="text-xs font-medium">
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+              <thead className="ltr:text-left rtl:text-right">
               <tr>
                 <th scope="col" className="flex justify-start">
                   EVENT
@@ -137,69 +127,71 @@ export const Dashboard = () => {
                   DATE
                 </th>
               </tr>
-            </thead>
-            {market.data.result.map((data, index) => (
-              <tbody className="text-xs" key={index}>
-                <tr className="border-b w-full">
-                  <td scope="col" className="pr-10 py-4 whitespace-nowrap">
-                    {data.action_type}
-                  </td>
-                  <td
-                    scope="col"
-                    className="flex gap-x-8 pr-6 py-4 justify-center"
-                  >
-                    <span>
-                      <img
-                        className="market-size z-10"
-                        src={data.transaction_of_collectible.ipfs_media_path}
-                      />
-                    </span>
-                    <span className="block pt-3 truncate">
-                      {data.transaction_of_collectible.collectible_name}
-                    </span>
-                  </td>
-                  <td
-                    scope="col"
-                    className="px-10 py-4 whitespace-nowrap text-center"
-                  >
-                    {Number(
-                      Math.round(data.unit_price / 1000000000000).toFixed(3)
-                    )}
-                  </td>
-                  <td
-                    scope="col"
-                    className="py-4 whitespace-nowrap text-center"
-                  >
-                    {data.quantity}
-                  </td>
-                  {/* <td><p className='truncate'>{data.activity_by}</p></td> */}
-                  <td
-                    scope="col"
-                    className="flex gap-x-8 pr-6 justify-center py-4"
-                  >
-                    <span>
-                      <img
-                        className="block market-size z-10"
-                        src={data.transaction_of_collectible.ipfs_media_path}
-                      />
-                    </span>
-                    <span className="block pt-3 w-[64px] lg:w-[100px] truncate">
-                      {data.activity_by}
-                    </span>
-                  </td>
-                  <td scope="col" className="px-6 py-4 whitespace-nowrap">
-                    {data.transfer_to_username}
-                  </td>
-                  <td
-                    scope="col"
-                    className="pl-10 py-4 whitespace-nowrap text-right"
-                  >
-                    {moment(data.activity_datetime).fromNow()}
-                  </td>
-                </tr>
-              </tbody>
-            ))}
-          </table>
+              </thead>
+
+              
+              {market.data.result.map((data, i) => (
+                <tbody key={i} className="divide-y divide-gray-200">
+                  <tr className="w-full">
+                    <td scope="col" className="pr-10 py-4 whitespace-nowrap">
+                      {data.action_type}
+                    </td>
+                    <td
+                      scope="col"
+                      className="flex gap-x-8 pr-6 py-4 justify-center"
+                    >
+                      <span>
+                        <img
+                          className="market-size z-10"
+                          src={data.transaction_of_collectible.ipfs_media_path}
+                        />
+                      </span>
+                      <span className="block pt-3 truncate">
+                        {data.transaction_of_collectible.collectible_name}
+                      </span>
+                    </td>
+                    <td
+                      scope="col"
+                      className="px-10 py-4 whitespace-nowrap text-center"
+                    >
+                      {Number(
+                        Math.round(data.unit_price / 1000000000000).toFixed(3)
+                      )}
+                    </td>
+                    <td
+                      scope="col"
+                      className="py-4 whitespace-nowrap text-center"
+                    >
+                      {data.quantity}
+                    </td>
+                    <td
+                      scope="col"
+                      className="flex gap-x-8 pr-6 justify-center py-4"
+                    >
+                      <span>
+                        <img
+                          className="block market-size z-10"
+                          src={data.transaction_of_collectible.ipfs_media_path}
+                        />
+                      </span>
+                      <span className="block pt-3 w-[64px] lg:w-[100px] truncate">
+                        {data.activity_by}
+                      </span>
+                    </td>
+                    <td scope="col" className="px-6 py-4 whitespace-nowrap">
+                      {data.transfer_to_username}
+                    </td>
+                    <td
+                      scope="col"
+                      className="pl-10 py-4 whitespace-nowrap text-right"
+                    >
+                      {moment(data.activity_datetime).fromNow()}
+                    </td>
+                  </tr>
+                </tbody>
+              ))}       
+            </table>
+          </div>
         </div>
       </div>
     </div>

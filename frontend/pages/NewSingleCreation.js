@@ -8,7 +8,7 @@ import moment from 'moment';
 import PaginationActivity from '../components/Pagination/PaginationActivity';
 import { IoMdColorPalette } from "react-icons/io";
 
-export const NewSingleNFTMarketplace = (props) => {
+export const NewSingleCreation = (props) => {
 
     const location = useLocation();
     const { data } = location.state;
@@ -23,7 +23,7 @@ export const NewSingleNFTMarketplace = (props) => {
 
     const handleCollectionClick = (data) => {
     setSelectedNFT(data);
-    navigate(`/newcollection/${data.sale_collectibles.collectible_uuid}`, {
+    navigate(`/creation/${data.sale_collectibles.collectible_uuid}`, {
       state: { data },
     });
     };
@@ -97,20 +97,20 @@ export const NewSingleNFTMarketplace = (props) => {
 
                 <div className="flex flex-col md:col-span-1 md:mr-6">
                      <div className='flex col-span-1 justify-center relative mt-6 lg:mt-0 order-last md:order-first'>
-                        <img className='rounded-md md:w-full lg:w-6/6 object-contain border-[1px] border-rose-600 carousel-background h-[300px] md:h-[600px]' src={data.sale_collectibles.ipfs_media_path}   />  
+                        <img className='rounded-md md:w-full lg:w-6/6 object-contain border-[1px] border-rose-600 carousel-background h-[600px]' src={data.featured_collectible_info.ipfs_media_path}   />  
                     </div>    
                 </div>
 
                 <div class="flex md:col-span-1 justify-center md:ml-10 order-first md:order-last">
                     <div className='flex flex-col w-full'>
                         <div className='text-xl lg:text-2xl font-medium py-2 flex gap-x-2 items-center'>
-                            {data.sale_collectibles.collectible_name}
+                            {data.featured_collectible_info.collectible_name}
                             <img src={images.badge} />
                         </div>
                         <div className='flex justify-between'>
                             <div className='text-[10px] lg:text-xs'>
                                 <span>Created by </span>
-                                <span className='text-red-600'>{data.sale_collectibles.collectibles_user.username}</span>
+                                <span className='text-red-600'>{data.featured_collectible_info.fullName}</span>
                             </div> 
                             
                             <div className='flex gap-x-4'>
@@ -119,7 +119,7 @@ export const NewSingleNFTMarketplace = (props) => {
                             </div>
                         </div>
 
-                        <div className='flex justify-between items-center mt-6 border-[1px] border-red-600 bg-[#242424] py-3 lg:py-4 px-4 md:px-8 rounded-lg'>
+                        <div className='flex justify-between items-center mt-6 border-[1px] border-red-600 bg-[#242424] py-3 lg:py-4 px-8 rounded-lg'>
                             <div className=''>
                                 <div className='text-xs lg:text-md'>Current Price</div>
                                 <div className='text-red-600 font-semibold text-xl lg:text-2xl'>0.005 ETH</div>
@@ -139,14 +139,14 @@ export const NewSingleNFTMarketplace = (props) => {
                                 >
                                   Description
                             </button>
-                           {/*  <button
+                            <button
                                 className={`rounded-lg h-8 lg:h-10 cursor-pointer px-6 ${
                                 currentComponent === 'B' ? "bg-red-600" : "bg-transparent"
                                 }`}
                                 onClick={() => setCurrentComponent('B')}
                                 >
                                   Attributes
-                            </button> */}
+                            </button>
                             <button 
                                 className={`rounded-lg h-8 lg:h-10 cursor-pointer px-6 ${
                                     currentComponent === 'C' ? "bg-red-600" : "bg-transparent"
@@ -163,14 +163,14 @@ export const NewSingleNFTMarketplace = (props) => {
                                 >
                                   Details
                             </button>
-                           {/*  <button 
+                            <button 
                                 className={`rounded-lg h-8 lg:h-10 cursor-pointer px-6 ${
                                     currentComponent === 'E' ? "bg-red-600" : "bg-transparent"
                                     }`}
                                 onClick={() => setCurrentComponent('E')}
                                 >
                                   Price History
-                            </button> */}
+                            </button>
                         </div>
 
                         <div className='py-2 text-white'>
@@ -237,20 +237,20 @@ export const NewSingleNFTMarketplace = (props) => {
 
                             {/* Owner */}
                             {currentComponent === 'C' ? 
-                                    <div className='flex flex-col bg-[#373737] text-[9px] md:text-xs py-6 px-4 md:px-10 rounded-sm gap-y-6'>
-                                    <div className='flex gap-x-2 md:gap-x-4 items-center'>
+                                    <div className='flex flex-col bg-[#373737] text-xs py-6 px-10 rounded-sm gap-y-6'>
+                                    <div className='flex gap-x-4 items-center'>
                                         <span><img src={`https://ipfs.io/ipfs/${data.sale_collectibles.collectibles_user.profile_photo_path}`} className="creator-size"/></span>
                                         <span>Owner
                                             <div className='font-extrabold'>{data.sale_collectibles.collectibles_user.username}</div>
                                         </span>
                                     </div>
-                                    <div className='flex gap-x-2 md:gap-x-4 items-center'>
+                                    <div className='flex gap-x-4 items-center'>
                                         <span><img src={`https://ipfs.io/ipfs/${data.sale_collectibles.collectibles_user.profile_photo_path}`} className="creator-size"/></span>
                                         <span>Creator
                                                 <div className='font-extrabold'>{data.sale_collectibles.collectibles_user.username}</div>
                                         </span>
                                     </div>
-                                    <div className='flex gap-x-2 md:gap-x-4 items-center'>
+                                    <div className='flex gap-x-4 items-center'>
                                         <span>
                                             <img 
                                                 src={`https://ipfs.io/ipfs/${data.sale_collectibles.collectible_collection.tokenLogo}`} 
@@ -268,10 +268,10 @@ export const NewSingleNFTMarketplace = (props) => {
                             {/* Details*/}
                             {currentComponent === 'D' ? 
                                <div className='grid'>
-                                    <div className='flex flex-col gap-y-6 bg-[#373737] text-xs py-6 px-4 md:px-10 rounded-sm'>
+                                    <div className='flex flex-col gap-y-6 bg-[#373737] text-xs py-6 px-10 rounded-sm'>
                                     <div className='flex justify-between'>
                                         <span>Contract Address</span>
-                                        <div className='font-extrabold block w-[100px] md:w-full overflow-auto text-right'>{data.sale_collectibles.tokenAddress}</div>
+                                        <div className='font-extrabold'>{data.sale_collectibles.tokenAddress}</div>
                                     </div>
                                     <div className='flex justify-between'>
                                         <span>Token Id</span>
@@ -308,7 +308,7 @@ export const NewSingleNFTMarketplace = (props) => {
 
 
     {/* Description part */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-1 mx-4 text-white pt-20 pb-10">
+      {/*   <div className="grid grid-cols-1 md:grid-cols-1 mx-4 text-white pt-20 pb-10">
             <div className='flex items-center gap-x-2 bg-[#242424] text-xs py-2 px-4 rounded-sm text-xs'>
                 <span><img src={images.pulse} /></span>
                 <span>CREATION ACTIVITIES</span>
@@ -318,64 +318,61 @@ export const NewSingleNFTMarketplace = (props) => {
         </div> */}
 
 
-        <div className="grid grid-cols-1 md:grid-cols-1 md:mx-4 text-white py-32">
-            <div className='flex items-center gap-x-2 bg-[#242424] text-xs py-3 px-2 md:px-4 rounded-sm text-xs'>
+        <div className="grid grid-cols-1 md:grid-cols-1 mx-4 text-white py-32">
+            <div className='flex items-center gap-x-2 bg-[#242424] text-xs py-3 px-4 rounded-sm text-xs'>
                 <span><img src={images.shapes} className="w-4"/></span>
                 <span>MORE FROM THIS CREATOR</span>
             </div>
             <div className='my-2 py-4 px-4 lg:px-8 bg-[#373737]'>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 lg:gap-x-8 mt-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4">
                     {artwork.rows.slice(0, 4).map((data, index) => (
-                        <div key={index} 
-                        className="flex flex-col md:col-span-1 relative bg-center bg-cover rounded-lg relative h-40 md:h-52 lg:h-80 hover:border-[1px] hover:border-rose-600 card-background" 
-                        style={{ backgroundImage: `url(${data.featured_collectible_info.alternative_media_path})` }}
-                        onClick={() => handleNFTClick(data)} 
-                      >    
-                      
-                        <div className=''>
-                            <div className='flex py-2 mx-2 lg:py-4 lg:mx-4 absolute top-0 gap-x-2'>
-                              <div>
-                                <img src={data.featured_collectible_info.collectibles_user.profile_photo_path} className="creator-size"/>
-                              </div>
-            
-                              <div>
-                                <div className='text-xs lg:text-lg font-semibold block w-[100px] lg:w-[160px] truncate'>{data.featured_collectible_info.collectible_name}</div>
-                                <div className='text-[9px] lg:text-sm block w-[100px] lg:w-[160px] truncate'>{data.featured_collectible_info.collectibles_user.username}</div>
-                              </div>
-                            </div>
-            
-                            <div className='absolute bottom-0 w-full'>
-                              <div className='m-1 lg:m-2 rounded-lg flex grid grid-cols-4 gap-x-2'>
-                                <div className='col-span-3 w-[108%]'>
-                                  <div className='grid grid-cols-2 lg:py-2 divide-x opaque-bg rounded-md' >
-                                    <div className='flex flex-col place-items-center'>
-                                      <div className='pt-1 pb-2' >
-                                      <div className='text-[9px] lg:text-[11px] text-opensans font-semibold'>List Price</div>
-                                      <div className='text-[10px] lg:text-sm'>4.06 ETH</div>
-                                      <div className='text-[9px] lg:text-[11px] text-opensans font-semibold'>5100 usd</div>
-                                      </div>
+                         <div key={index} 
+                         className="flex flex-col md:col-span-1 relative bg-center bg-cover rounded-lg relative h-40 md:h-52 lg:h-80 hover:border-[1px] hover:border-rose-600 card-background" 
+                         style={{ backgroundImage: `url(${data.featured_collectible_info.alternative_media_path})` }}
+                       >    
+                       
+                         <div className=''>
+                             <div className='flex py-2 mx-2 lg:py-4 lg:mx-4 absolute top-0 gap-x-2'>
+                               <div>
+                                 <img src={data.featured_collectible_info.collectibles_user.profile_photo_path} className="creator-size"/>
+                               </div>
+             
+                               <div>
+                                 <div className='text-xs lg:text-lg font-semibold block w-[100px] lg:w-[160px] truncate'>{data.featured_collectible_info.collectible_name}</div>
+                                 <div className='text-[9px] lg:text-sm'>{data.featured_collectible_info.collectibles_user.username}</div>
+                               </div>
+                             </div>
+             
+                             <div className='absolute bottom-0 w-full'>
+                                <div className='m-1 lg:m-2 rounded-lg flex grid grid-cols-4 gap-x-2'>
+                                    <div className='col-span-3 w-[108%]'>
+                                    <div className='grid grid-cols-2 lg:py-2 divide-x opaque-bg rounded-md' >
+                                        <div className='flex flex-col place-items-center'>
+                                        <div className='pt-1 pb-2' >
+                                        <div className='text-[10px] lg:text-[11px] text-opensans font-semibold'>List Price</div>
+                                        <div className='text-[11px] lg:text-sm'>4.06 ETH</div>
+                                        <div className='text-[10px] lg:text-[11px] text-opensans font-semibold'>5100 usd</div>
+                                        </div>
+                                        </div>
+                                        <div className='flex flex-col place-items-center'>
+                                        <div className='pt-1 pb-2'>
+                                        <div className='text-[10px] lg:text-[11px] text-opensans font-semibold'>Last Sale</div>
+                                        <div className='text-[11px] lg:text-sm'>1000</div>
+                                        <div className='text-[10px] lg:text-[11px] text-opensans font-semibold'>5100 usd</div>
+                                        </div>
+                                        </div>
                                     </div>
-                                    <div className='flex flex-col place-items-center'>
-                                      <div className='pt-1 pb-2'>
-                                      <div className='text-[9px] lg:text-[11px] text-opensans font-semibold'>Last Sale</div>
-                                      <div className='text-[10px] lg:text-sm'>1000</div>
-                                      <div className='text-[9px] lg:text-[11px] text-opensans font-semibold'>5100 usd</div>
-                                      </div>
                                     </div>
-                                  </div>
-                                </div>
-                                <div className='opaque-bg flex flex-col place-items-center h-10 rounded-md w-[80%] translate-x-1 md:translate-x-3'>
-                                <IoMdColorPalette
-                                    className="text-gray-100 text-2xl mt-2"
-                                  />
-                                </div>
-            
-                              
-                                
-                              </div>
+                                    <div className='opaque-bg flex flex-col place-items-center h-10 rounded-md w-[80%] translate-x-3'>
+                                    <IoMdColorPalette
+                                        className="text-gray-100 text-2xl mt-2"
+                                    />
                             </div>
-                        </div>
-                     </div>
+                  </div>
+                </div>
+
+                         </div>
+                      </div>
                     ))}
                 </div>
                 

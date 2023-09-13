@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useState} from 'react'
 import { Link } from 'react-router-dom'
 import artwork from "../../data/landing/artwork";
 import { IoMdColorPalette } from "react-icons/io";
+import { useNavigate, Link } from "react-router-dom";
 
 function FeaturedCreations() {
+
+  const [selectedNFT, setSelectedNFT] = useState(null);
+  const navigate = useNavigate();
+
+  const handleNFTClick = (data) => {
+    setSelectedNFT(data);
+    navigate(`/creation/${data.featured_collectible_info.collectible_uuid}`, {
+      state: { data },
+    });
+  };
+
   return (
     <>
     <div className=''>
@@ -20,6 +32,7 @@ function FeaturedCreations() {
          <div key={index} 
             className="flex flex-col md:col-span-1 relative bg-center bg-cover rounded-lg relative h-40 md:h-52 lg:h-80 hover:border-[1px] hover:border-rose-600 card-background" 
             style={{ backgroundImage: `url(${data.featured_collectible_info.alternative_media_path})` }}
+            onClick={() => handleNFTClick(data)} 
           >    
           
             <div className=''>

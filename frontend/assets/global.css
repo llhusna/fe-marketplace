@@ -404,7 +404,7 @@ main.please-wait .loader:after{
 
 @media (max-width: 45em) {
 .body-container {
-  padding: 8em 2em;
+  padding: 3em 2em;
 }
 
 .trending-size {

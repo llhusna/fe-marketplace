@@ -56,7 +56,7 @@ export const Profile = () => {
   return (
     <>
     <div className="grid grid-cols-1 md:grid-cols-4 relative gap-8 mt-2 w-full md:w-[90%]">
-      <div className="flex flex-col md:col-span-2 w-[80%] rounded-md text-white mx-6 md:mx-0">
+      <div className="flex flex-col md:col-span-2 w-full md:w-[80%] rounded-md text-white md:mx-0">
         <div className="grid grid-cols-2 relative gap-4">
           <div className="bg-[#191717] p-6 rounded-xl text-center lg:h-44">
             <div className="text-sm lg:text-md">
@@ -94,7 +94,7 @@ export const Profile = () => {
         </div>
       </div>
 
-          <div className="flex flex-col md:col-span-2 -translate-x-20 w-[110%] mx-6 md:mx-0">
+          <div className="flex flex-col md:col-span-2 md:-translate-x-20 w-[100%] md:w-[110%] mx-6 md:mx-0">
             <div>
                 <div className="font-medium">About</div>
                 <div className="text-xs lg:text-xs font-light pt-6">

@@ -68,10 +68,10 @@ function SingleAuction() {
 
   return (
     <>
-    <div className="grid grid-cols-1 lg:grid-cols-2 mx-4 text-white pt-20">
+    <div className="grid grid-cols-1 lg:grid-cols-2 mx-8 md:mx-4 text-white pt-10 md:pt-20">
 
       {/* left section */}
-      <div className="flex col-span-1 justify-end relative ml-10">
+      <div className="flex col-span-1 justify-end relative md:ml-10">
 
         {/* modal left section */}
        {/*  { showModal ?
@@ -98,22 +98,22 @@ function SingleAuction() {
               </div>
 
               <div className='flex justify-between'>
-                  <div className='text-xs'>
-                      <span>Created by</span>
-                      <span className='text-red-600'> Creator Name</span>
+                  <div className='text-[10px] md:text-xs'>
+                      <span>Created by </span>
+                      <span className='text-red-600'>{data.auctions_of_collectible.collectibles_user.username}</span>
                   </div> 
               </div>
 
-              <div className='flex justify-between items-center mt-6 bg-[#242424] py-4 px-8 rounded-lg'>
-                  <div className='text-2xl font-semibold'>AUCTION STARTS IN</div>
+              <div className='flex justify-between items-center mt-6 bg-[#242424] py-4 px-4 md:px-8 rounded-lg'>
+                  <div className='text-md md:text-2xl font-semibold'>AUCTION STARTS IN</div>
                   <AuctionCountdownDesc data={data}/>
               </div>
 
-              <div className='flex justify-between items-center mt-3 border-[1px] border-red-600 bg-[#242424] py-6 px-8 rounded-lg'>
+              <div className='flex justify-between items-center mt-3 border-[1px] border-red-600 bg-[#242424] py-6 px-4 md:px-8 rounded-lg'>
                   <div>
                       <div className='text-sm font-semibold text-opensans'>Starting Bid</div>
                         <div>
-                          <span className='text-red-600 font-semibold text-2xl'>0.0035 {auction.currency_symbol}</span>
+                          <span className='text-red-600 font-semibold text-lg md:text-2xl'>0.0035 {auction.currency_symbol}</span>
                           <span className='text-white pb-4 text-sm font-semibold'> $60.5905</span>
                         </div>
                   </div>
@@ -125,7 +125,7 @@ function SingleAuction() {
               </div>
 
               <div className='grid pt-2'>
-                  <div className='bg-[#373737] text-xs py-6 px-10 rounded-sm'>
+                  <div className='bg-[#373737] text-xs py-6 px-4 md:px-10 rounded-sm'>
                     {/* {info.collectible_description} */}
                     Brought to you by Phygitals Inc, RetroGoons is a unique phygital collection that caters to both retro enthusiasts and art collectors. The collection features a series of nostalgicically-designed characters that pay homage to classic video game and pop culture icons. Each character is available as a limited edition 1/1 piece with a carefully crafted asset catalogue.
                   </div>
@@ -137,7 +137,7 @@ function SingleAuction() {
       <div className="">
         { !showModal ?
 
-        <div className='flex col-span-1 justify-center relative mt-6 lg:mt-0 -translate-x-10'>
+        <div className='flex col-span-1 justify-center relative mt-6 lg:mt-0 md:-translate-x-10'>
           <img className='rounded-md md:w-full lg:w-4/6 object-contain border-[1px] border-rose-600 carousel-background h-[500px]' src={data.auctions_of_collectible.ipfs_media_path}   />  
         </div>      
         : 
